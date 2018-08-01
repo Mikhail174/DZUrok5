@@ -41,13 +41,14 @@ namespace DZUrok5Zad2
 
 
                 dataGridView1.DataSource = Employees;
+                ;
 
 
-               // foreach (DataRow ordersRow in chilRows)
-                    // Console.WriteLine("\tOrderId: {0}, OrderDate: {1};", ordersRow["OrderID"], ordersRow["OrderDate"]);
+                foreach (DataRow ordersRow in chilRows)
+                     Console.WriteLine("\tOrderId: {0}, OrderDate: {1};", ordersRow["OrderID"], ordersRow["OrderDate"]);
 
 
-                    //  Console.WriteLine();
+                      Console.WriteLine();
                 //}
             }
         }
