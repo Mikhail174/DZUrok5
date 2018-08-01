@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZUrok5Zad2", "DZUrok5Zad2\DZUrok5Zad2.csproj", "{538DB1F9-1731-4865-8679-0C10B069C27A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZUrok5Zad2__", "DZUrok5Zad2__\DZUrok5Zad2__.csproj", "{6C0592BC-13F9-406E-8A71-86F03AB80C93}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{538DB1F9-1731-4865-8679-0C10B069C27A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{538DB1F9-1731-4865-8679-0C10B069C27A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{538DB1F9-1731-4865-8679-0C10B069C27A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{538DB1F9-1731-4865-8679-0C10B069C27A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C0592BC-13F9-406E-8A71-86F03AB80C93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C0592BC-13F9-406E-8A71-86F03AB80C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C0592BC-13F9-406E-8A71-86F03AB80C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C0592BC-13F9-406E-8A71-86F03AB80C93}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7C924F2-9997-4527-8C65-C060D3E8F885}
+	EndGlobalSection
+EndGlobal
