@@ -28,7 +28,7 @@ namespace DZUrok5Zad2
             DataTable Employees = shopDB.Tables[0];
             DataTable orders = shopDB.Tables[1];
             shopDB.Relations.Add("Employees_Orders", Employees.Columns["EmployeeID"], orders.Columns["EmployeeID"]);
-             Employees.Columns.Add("CountSale", typeof(double), "Count(Child(Employees_Orders).EmployeeID)");
+            Employees.Columns.Add("CountSale", typeof(double), "Count(Child(Employees_Orders).EmployeeID)");
             
 
             foreach (DataRow EmployeeRow in Employees.Rows)
@@ -41,7 +41,7 @@ namespace DZUrok5Zad2
 
 
                 dataGridView1.DataSource = Employees;
-                ;
+                
 
 
                 foreach (DataRow ordersRow in chilRows)
