@@ -20,27 +20,39 @@ namespace DZUrok5Zad3
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=WKS456\SQLEXPRESS;Initial Catalog=ShopDB;Integrated Security=True";
+            string connectionString = @"Data Source=МИХАИЛ-ПК\MSSQLSERVER1;Initial Catalog=ShopDB;Integrated Security=True";
             string commandString = "SELECT City, CustomerNo FROM Customers; SELECT * FROM Orders;";
             DataSet shopDB = new DataSet("ShopDB");
             SqlDataAdapter adapter = new SqlDataAdapter(commandString, connectionString);
             adapter.Fill(shopDB);
             DataTable Customers = shopDB.Tables[0];
             DataTable Orders = shopDB.Tables[1];
+            DataTable Test = new DataTable();
             shopDB.Relations.Add("Customers_Orders", Customers.Columns["CustomerNo"], Orders.Columns["CustomerNo"]);
             Customers.Columns.Add("CountSale", typeof(double), "Count(Child(Customers_Orders).CustomerNo)");
-            
+            DataColumn column1 = new DataColumn();
+            column1.ColumnName = "ChildID";
+            Test.Columns.Add(column1);
+
+
+
+
+
+
 
 
             foreach (DataRow customer in Customers.Rows)
             {
                 if (customer.GetChildRows("Customers_Orders").Length != 0)
                 {
-                    dataGridView1.AutoGenerateColumns = true;
-                    dataGridView1.Rows.Add(customer);
+
+                    foreach (DataColumn column in Customers.Columns)
+
+                        Test.Columns.Add(column);
 
                 }
             }
+            dataGridView1.DataSource = Test;
 
         }
     }
