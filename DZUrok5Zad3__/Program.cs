@@ -1,24 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data;
 
-namespace DZUrok5Zad3
+namespace DZUrok5Zad3__
 {
-    public partial class Form1 : Form
+    class Program
     {
-        public Form1()
-        {
-            InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
+        static void Main(string[] args)
         {
             string connectionString = @"Data Source=WKS456\SQLEXPRESS;Initial Catalog=ShopDB;Integrated Security=True";
             string commandString = "SELECT City, CustomerNo FROM Customers; SELECT * FROM Orders;";
@@ -29,19 +21,15 @@ namespace DZUrok5Zad3
             DataTable Orders = shopDB.Tables[1];
             shopDB.Relations.Add("Customers_Orders", Customers.Columns["CustomerNo"], Orders.Columns["CustomerNo"]);
             Customers.Columns.Add("CountSale", typeof(double), "Count(Child(Customers_Orders).CustomerNo)");
-            
-
-
             foreach (DataRow customer in Customers.Rows)
             {
                 if (customer.GetChildRows("Customers_Orders").Length != 0)
                 {
-                    dataGridView1.AutoGenerateColumns = true;
-                    dataGridView1.Rows.Add(customer);
-
-                }
+                    Console.WriteLine("{0} {1}", customer[0], customer[2]);
+                    Console.WriteLine();
+                   
+               }
             }
-
         }
     }
 }
