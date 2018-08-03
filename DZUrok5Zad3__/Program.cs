@@ -12,7 +12,7 @@ namespace DZUrok5Zad3__
     {
         static void Main(string[] args)
         {
-            string connectionString = @"Data Source=МИХАИЛ-ПК\MSSQLSERVER1;Initial Catalog=ShopDB;Integrated Security=True";
+            string connectionString = @"Data Source=WKS456\SQLEXPRESS;Initial Catalog=ShopDB;Integrated Security=True";
             string commandString = "SELECT City, CustomerNo FROM Customers; SELECT * FROM Orders;";
             DataSet shopDB = new DataSet("ShopDB");
             SqlDataAdapter adapter = new SqlDataAdapter(commandString, connectionString);
@@ -25,6 +25,7 @@ namespace DZUrok5Zad3__
             {
                 if (customer.GetChildRows("Customers_Orders").Length != 0)
                 {
+                    //Console.WriteLine(customer[0]);
                     Console.WriteLine("{0} {1}", customer[0], customer[2]);
                     Console.WriteLine();
                    
