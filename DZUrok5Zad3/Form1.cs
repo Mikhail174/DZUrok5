@@ -18,15 +18,12 @@ namespace DZUrok5Zad3
             InitializeComponent();
         }
 
-        private BindingSource binding1;
+        BindingSource bindingSource1 = new BindingSource();
 
         private void Form1_Load(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=WKS456\SQLEXPRESS;Initial Catalog=ShopDB;Integrated Security=True";
-            string commandString = "SELECT City, CustomerNo FROM Customers; SELECT * FROM Orders;";
-
-            binding1 = new BindingSource();
-
+            string commandString = "SELECT CustomerNo,City FROM Customers; SELECT * FROM Orders;";
             DataSet shopDB = new DataSet("ShopDB");
             SqlDataAdapter adapter = new SqlDataAdapter(commandString, connectionString);
             adapter.Fill(shopDB);
@@ -34,35 +31,26 @@ namespace DZUrok5Zad3
             DataTable Orders = shopDB.Tables[1];
             shopDB.Relations.Add("Customers_Orders", Customers.Columns["CustomerNo"], Orders.Columns["CustomerNo"]);
             Customers.Columns.Add("CountSale", typeof(double), "Count(Child(Customers_Orders).CustomerNo)");
-            
 
-
-
-
-            /*foreach (DataColumn customer in Customers.Columns)
+            for (int i = 0; i < Customers.Columns.Count; i++)
             {
-                dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-                {
-                    DataPropertyName = "A",
-                    HeaderText = "Заголовок 1"
-                });
-               
-
-
-                // if (customer.GetChildRows("Customers_Orders").Length != 0)
-                // {
-
-                //  dataGridView1.Rows.Add(customer);
-
-                // }
+                dataGridView1.Columns.Add("" ,"");
+                
             }
-            foreach (DataRow rows in Customers.Rows)
-                dataGridView1.Rows.Add(rows);*/
+            dataGridView1.Columns[0].Visible = false;
 
-            binding1.DataSource = Customers;
-            dataGridView1.DataSource =binding1;
-
+            foreach (DataRow customer in Customers.Rows)
+            {
+                if (customer.GetChildRows("Customers_Orders").Length != 0)
+                {
+                   
+                    dataGridView1.Rows.Add(customer.ItemArray);
+                   // dataGridView1.Rows.Add(customer[2]);
+                }
+            }
 
         }
+
+
     }
 }
