@@ -31,15 +31,19 @@ namespace DZUrok5Zad3
             DataTable Orders = shopDB.Tables[1];
             shopDB.Relations.Add("Customers_Orders", Customers.Columns["CustomerNo"], Orders.Columns["CustomerNo"]);
             Customers.Columns.Add("CountSale", typeof(double), "Count(Child(Customers_Orders).CustomerNo)");
-
+            DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[Customers.Columns.Count];
             for (int i = 0; i < Customers.Columns.Count; i++)
             {
-                // dataGridView1.Columns.Add("" ,"");
-                dataGridView1.Columns.Add(new DataColumn(Customers.Columns[i].Caption, typeof(string)));
-                MessageBox.Show(Customers.Columns[i].Caption);
+
+
+                column[i] = new DataGridViewTextBoxColumn();
+                column[i].HeaderText = Customers.Columns[i].Caption ;
+                column[i].Name = "Header" + i;
 
 
             }
+            this.dataGridView1.Columns.AddRange(column);
+
             dataGridView1.Columns[0].Visible = false;
 
             foreach (DataRow customer in Customers.Rows)
