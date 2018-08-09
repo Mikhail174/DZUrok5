@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZUrok5Zad2", "DZUrok5Zad2\DZUrok5Zad2.csproj", "{538DB1F9-1731-4865-8679-0C10B069C27A}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZUrok5Zad3", "DZUrok5Zad3\DZUrok5Zad3.csproj", "{849002ED-F460-44AF-BDBE-69F1CF9E1962}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZUrok5Zad3__", "DZUrok5Zad3__\DZUrok5Zad3__.csproj", "{904E2B23-CCE4-4CC0-96A6-0BDB476996AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZUrok5Zad4", "DZUrok5Zad4\DZUrok5Zad4.csproj", "{1E80EF75-777F-4BA5-83A5-6EFE13939A18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{904E2B23-CCE4-4CC0-96A6-0BDB476996AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{904E2B23-CCE4-4CC0-96A6-0BDB476996AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{904E2B23-CCE4-4CC0-96A6-0BDB476996AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E80EF75-777F-4BA5-83A5-6EFE13939A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E80EF75-777F-4BA5-83A5-6EFE13939A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E80EF75-777F-4BA5-83A5-6EFE13939A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E80EF75-777F-4BA5-83A5-6EFE13939A18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
