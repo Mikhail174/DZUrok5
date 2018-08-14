@@ -23,16 +23,17 @@ namespace DZUrok5Zad4
         private void Form1_Load(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=МИХАИЛ-ПК\MSSQLSERVER1;Initial Catalog=ShopDB;Integrated Security=True";
-            string commandString = "SELECT * FROM Customers; SELECT * FROM Orders; SELECT * FROM Employees";
+            string commandString = "SELECT CustomerNo FROM Customers; SELECT CustomerNo,EmployeeID FROM Orders; SELECT EmployeeID FROM Employees";
             DataSet shopDB = new DataSet("ShopDB");
             SqlDataAdapter adapter = new SqlDataAdapter(commandString, connectionString);
             adapter.Fill(shopDB);
             DataTable Customers = shopDB.Tables[0];
             DataTable Orders = shopDB.Tables[1];
             DataTable Employees = shopDB.Tables[2];
-            shopDB.Relations.Add("Customers_Orders", Customers.Columns["CustomerNo"], Orders.Columns["CustomerNo"]);
-            Customers.Columns.Add("NameCustomer", typeof(String), "AVG(Child(Customers_Orders).CustomerNo)");
-            dataGridView1.DataSource = Customers;
+            shopDB.Relations.Add("Orders_Customers", Customers.Columns["CustomerNo"], Orders.Columns["CustomerNo"]);
+            shopDB.Relations.Add("Orders_Employees", Employees.Columns["EmployeeID"], Orders.Columns["EmployeeID"]);
+            Orders.Columns.Add("NameCustomer", typeof(String), "Parent(Orders_Employees).EmployeeID");
+            // dataGridView1.DataSource = Orders;
             //DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[Customers.Columns.Count];
             //for (int i = 0; i < Customers.Columns.Count; i++)
             //{
@@ -47,16 +48,21 @@ namespace DZUrok5Zad4
             //this.dataGridView1.Columns.AddRange(column);
 
             //dataGridView1.Columns[0].Visible = false;
+            //DataGridViewTextBoxColumn dgvAge = new DataGridViewTextBoxColumn();
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "dgvAge", HeaderText = "CustomerNo", Width = 100 });
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "dgvAge", HeaderText = "EmployeeID", Width = 100 });
 
-            //foreach (DataRow customer in Customers.Rows)
-            //{
-            //    if (customer.GetChildRows("Customers_Orders").Length != 0)
-            //    {
 
-            //        dataGridView1.Rows.Add(customer.ItemArray);
-            //        // dataGridView1.Rows.Add(customer[2]);
-            //    }
-            //}
+            foreach (DataRow customer in Orders.Rows)
+            {
+                // if (customer.GetParentRows("Orders_Employees").Length != 0)
+                // {
+                DataRow[] n = customer.GetParentRows("Orders_Employees");
+                
+                    dataGridView1.Rows.Add(n);
+                    // dataGridView1.Rows.Add(customer[2]);
+              // }
+            }
 
         }
 
