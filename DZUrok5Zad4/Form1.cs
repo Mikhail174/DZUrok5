@@ -23,7 +23,7 @@ namespace DZUrok5Zad4
         private void Form1_Load(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=МИХАИЛ-ПК\MSSQLSERVER1;Initial Catalog=ShopDB;Integrated Security=True";
-            string commandString = "SELECT CustomerNo FROM Customers; SELECT CustomerNo,EmployeeID FROM Orders; SELECT EmployeeID FROM Employees";
+            string commandString = "SELECT LName,FName,CustomerNo FROM Customers; SELECT CustomerNo,EmployeeID FROM Orders; SELECT EmployeeID,LName,FName FROM Employees";
             DataSet shopDB = new DataSet("ShopDB");
             SqlDataAdapter adapter = new SqlDataAdapter(commandString, connectionString);
             adapter.Fill(shopDB);
@@ -32,40 +32,48 @@ namespace DZUrok5Zad4
             DataTable Employees = shopDB.Tables[2];
             shopDB.Relations.Add("Orders_Customers", Customers.Columns["CustomerNo"], Orders.Columns["CustomerNo"]);
             shopDB.Relations.Add("Orders_Employees", Employees.Columns["EmployeeID"], Orders.Columns["EmployeeID"]);
-            Orders.Columns.Add("NameCustomer", typeof(String), "Parent(Orders_Employees).EmployeeID");
-            // dataGridView1.DataSource = Orders;
+            Orders.Columns.Add("SurnameEmployee", typeof(String), "Parent(Orders_Employees).Fname");
+            Orders.Columns.Add("NameEmployee", typeof(String), "Parent(Orders_Employees).Lname");
+           // Orders.Columns.Add(new DataColumn("1", typeof(String), "dsfdsfsfd"));
+            Orders.Columns.Add("SurnameCustomer", typeof(String), "Parent(Orders_Customers).Fname");
+            Orders.Columns.Add("NameCustomer", typeof(String), "Parent(Orders_Customers).Lname");
+
+            dataGridView1.DataSource = Orders;
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Visible = false;
             //DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[Customers.Columns.Count];
-            //for (int i = 0; i < Customers.Columns.Count; i++)
+            //for (int i = 0; i < Orders.Columns.Count; i++)
             //{
 
 
             //    column[i] = new DataGridViewTextBoxColumn();
-            //    column[i].HeaderText = Customers.Columns[i].Caption;
+            //    column[i].HeaderText = Orders.Columns[i].Caption;
             //    column[i].Name = "Header" + i;
 
 
+            //    //}
+            //    //this.dataGridView1.Columns.AddRange(column);
+
+            //    //dataGridView1.Columns[0].Visible = false;
+            //    //DataGridViewTextBoxColumn dgvAge = new DataGridViewTextBoxColumn();
+            //    //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "dgvAge", HeaderText = "CustomerNo", Width = 100 });
+            //    //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "dgvAge", HeaderText = "EmployeeID", Width = 100 });
+            //    //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "dgvAge", HeaderText = "Fname", Width = 100 });
+            //    //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "dgvAge", HeaderText = "Lname", Width = 100 });
+
+
+
+            //    //foreach (DataRow order in Orders.Rows)
+            //    //{
+            //    //    if (order.GetParentRows("Orders_Employees").Length != 0)
+            //    //    {
+            //    //        dataGridView1.Rows.Add(order.ItemArray);
+            //    //    }
+            //    //}
+
             //}
-            //this.dataGridView1.Columns.AddRange(column);
 
-            //dataGridView1.Columns[0].Visible = false;
-            //DataGridViewTextBoxColumn dgvAge = new DataGridViewTextBoxColumn();
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "dgvAge", HeaderText = "CustomerNo", Width = 100 });
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn() { Name = "dgvAge", HeaderText = "EmployeeID", Width = 100 });
-
-
-            foreach (DataRow customer in Orders.Rows)
-            {
-                // if (customer.GetParentRows("Orders_Employees").Length != 0)
-                // {
-                DataRow[] n = customer.GetParentRows("Orders_Employees");
-                
-                    dataGridView1.Rows.Add(n);
-                    // dataGridView1.Rows.Add(customer[2]);
-              // }
-            }
 
         }
-
-
     }
 }
