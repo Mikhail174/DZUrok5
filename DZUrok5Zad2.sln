@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZUrok5Zad3__", "DZUrok5Zad
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZUrok5Zad4", "DZUrok5Zad4\DZUrok5Zad4.csproj", "{1E80EF75-777F-4BA5-83A5-6EFE13939A18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZUrok5Zad0", "DZUrok5Zad0\DZUrok5Zad0.csproj", "{A99F33C8-46FA-4A8A-A120-5B9AF503AA6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{1E80EF75-777F-4BA5-83A5-6EFE13939A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E80EF75-777F-4BA5-83A5-6EFE13939A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E80EF75-777F-4BA5-83A5-6EFE13939A18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A99F33C8-46FA-4A8A-A120-5B9AF503AA6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A99F33C8-46FA-4A8A-A120-5B9AF503AA6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A99F33C8-46FA-4A8A-A120-5B9AF503AA6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A99F33C8-46FA-4A8A-A120-5B9AF503AA6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

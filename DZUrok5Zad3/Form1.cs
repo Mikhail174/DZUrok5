@@ -22,7 +22,7 @@ namespace DZUrok5Zad3
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=WKS456\SQLEXPRESS;Initial Catalog=ShopDB;Integrated Security=True";
+            string connectionString = @"Data Source=МИХАИЛ-ПК\MSSQLSERVER1;Initial Catalog=ShopDB;Integrated Security=True";
             string commandString = "SELECT CustomerNo,City FROM Customers; SELECT * FROM Orders;";
             DataSet shopDB = new DataSet("ShopDB");
             SqlDataAdapter adapter = new SqlDataAdapter(commandString, connectionString);
